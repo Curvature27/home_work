@@ -25,21 +25,21 @@ def check_winner(board):
             return row[0]
 
     # Проверка столбцов
-    for col in range(3):
+for col in range(3):
         if board[0][col] == board[1][col] == board[2][col] != ' ':
             return board[0][col]
 
     # Проверка диагоналей
-    if board[0][0] == board[1][1] == board[2][2] != ' ':
+if board[0][0] == board[1][1] == board[2][2] != ' ':
         return board[0][0]
     if board[0][2] == board[1][1] == board[2][0] != ' ':
         return board[0][2]
 
     # Проверка на ничью
-    if all(board[i][j] != ' ' for i in range(3) for j in range(3)):
+if all(board[i][j] != ' ' for i in range(3) for j in range(3)):
         return 'draw'
 
-    return None
+return None
 
 
 def is_valid_move(board, row, col):
@@ -62,7 +62,7 @@ def get_player_move(board, player):
             move = input(f"Игрок {player}, введите ваш ход (строка столбец, например '0 1'): ")
             row, col = map(int, move.split())
 
-            if is_valid_move(board, row, col):
+if is_valid_move(board, row, col):
                 return row, col
             else:
                 print("Некорректный ход! Попробуйте еще раз.")
@@ -78,10 +78,10 @@ def play_game():
     board = [[' ' for _ in range(3)] for _ in range(3)]
     current_player = 'X'
 
-    print("Добро пожаловать в игру Крестики-нолики!")
+print("Добро пожаловать в игру Крестики-нолики!")
     print("Для хода введите номер строки и столбца через пробел (например: '0 1')")
 
-    while True:
+while True:
         # Отображение текущего состояния поля
         print_board(board)
 
@@ -94,7 +94,7 @@ def play_game():
         # Проверка состояния игры
         result = check_winner(board)
 
-        if result:
+if result:
             print_board(board)
             if result == 'draw':
                 print("Ничья! Игра завершена.")
@@ -103,7 +103,7 @@ def play_game():
             break
 
         # Смена игрока
-        current_player = 'O' if current_player == 'X' else 'X'
+current_player = 'O' if current_player == 'X' else 'X'
 
 
 def main():
@@ -114,7 +114,7 @@ def main():
         play_game()
 
         # Предложение сыграть еще раз
-        play_again = input("\nХотите сыграть еще раз? (да/нет): ").lower()
+play_again = input("\nХотите сыграть еще раз? (да/нет): ").lower()
         if play_again not in ['да', 'д', 'yes', 'y']:
             print("Спасибо за игру! До свидания!")
             break
